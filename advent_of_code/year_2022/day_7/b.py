@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from queue import SimpleQueue
 from typing import Literal
 
-from lib.util import Input, get_problem_input
+from advent_of_code.lib.util import Input, get_problem_input
 
 problem_input: Input = get_problem_input()
 test_input: Input = get_problem_input(test=True)

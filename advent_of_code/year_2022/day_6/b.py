@@ -1,4 +1,4 @@
-from lib.util import Input, get_problem_input
+from advent_of_code.lib.util import Input, get_problem_input
 
 problem_input: Input = get_problem_input()
 test_input: Input = get_problem_input(test=True)
@@ -7,12 +7,12 @@ test_input: Input = get_problem_input(test=True)
 def solve(problem_input: Input) -> str:
     datastream = problem_input.raw()
 
-    for i in range(0, len(datastream) - 3):
-        packet = set(datastream[i : i + 4])
-        if len(packet) == 4:
+    for i in range(0, len(datastream) - 13):
+        packet = set(datastream[i : i + 14])
+        if len(packet) == 14:
             break
 
-    return str(i + 4)
+    return str(i + 14)
 
 
 def test() -> str:

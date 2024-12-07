@@ -1,4 +1,4 @@
-from lib.util import Input, get_problem_input
+from advent_of_code.lib.util import Input, get_problem_input
 
 problem_input: Input = get_problem_input()
 test_input: Input = get_problem_input(test=True)
@@ -18,9 +18,10 @@ def solve(problem_input: Input) -> str:
         )
 
         if (
-            len(first_elf.intersection(second_elf)) > 0
-            or len(second_elf.intersection(first_elf)) > 0
+            first_elf.intersection(second_elf) == second_elf
+            or second_elf.intersection(first_elf) == first_elf
         ):
+
             fully_contained += 1
 
     return str(fully_contained)

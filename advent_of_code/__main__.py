@@ -10,7 +10,7 @@ from rich import print
 
 import typer
 
-from solver import Solver
+from advent_of_code.solver import Solver
 
 app = typer.Typer(
     help="Advent of Code",
@@ -35,7 +35,10 @@ def solve(
     """
     try:
         solution = cast(
-            Solver, importlib.import_module(f"{year}.day{day}.{part.value}")
+            Solver,
+            importlib.import_module(
+                f"advent_of_code.year_{year}.day_{day}.{part.value}"
+            ),
         )
 
         timer_start = perf_counter_ns()
@@ -48,6 +51,8 @@ def solve(
 
     except ModuleNotFoundError:
         print(f"[bold red]:boom: Solution not found.[/]")
+    except FileNotFoundError:
+        print(f"[bold red]Input file(s) for the given solution not found.[/]")
 
 
 @app.command()
@@ -62,7 +67,7 @@ def scaffold(
     """
 
     base_path = Path("advent-of-code")
-    solution_path = base_path / f"{year}" / f"day{day}"
+    solution_path = base_path / f"year_{year}" / f"day_{day}"
     template_path = base_path / "template.py"
 
     try:

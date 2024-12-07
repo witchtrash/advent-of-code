@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Literal, cast
 
-from lib.util import Input, get_problem_input
+from advent_of_code.lib.util import Input, get_problem_input
 
 problem_input: Input = get_problem_input()
 test_input: Input = get_problem_input(test=True)
