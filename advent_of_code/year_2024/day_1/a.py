@@ -5,7 +5,17 @@ test_input: Input = get_problem_input(test=True)
 
 
 def solve(problem_input: Input) -> str:
-    return problem_input.raw()
+    list_lines = problem_input.lines()
+
+    first_list = sorted([int(x.split()[0]) for x in list_lines])
+    second_list = sorted([int(x.split()[-1]) for x in list_lines])
+
+    distance = 0
+
+    for i in range(len(first_list)):
+        distance += abs(first_list[i] - second_list[i])
+
+    return str(distance)
 
 
 def test() -> str:
